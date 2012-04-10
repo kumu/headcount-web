@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Headcount</title>
+  
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/underscore.js"></script>
+  <script src="/javascripts/backbone.js"></script>
+  <script src="/javascripts/raphael.js"></script>
+  <script src="/javascripts/morris.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="/javascripts/inflection.js"></script>
+  <script src="/javascripts/application.js"></script>
+  
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen, projection">
+  
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      Headcount.initialize(<%= @data.to_json %>);
+    });
+  </script>
+</head>
+<body>
+  <header class="container">
+    <h1>Headcount</h1>
+  </header>
+  
+  <div class="container">
+    <div id="headcount">
+    </div>
+    
+    <h3>Data</h3>
+    <pre class="data">
+<%= @data.to_json.to_s.gsub('[', "[\n").gsub('{', "&nbsp;&nbsp;{").gsub('},', "},\n").gsub(']', "\n]").gsub("\n", "<br>") %>
+    </pre>
+  </div>
+  
+  <footer class="container">
+    <div class="credits">
+      Powered by <a href="http://github.com/kumu/headcount">Headcount</a><br>
+      Icons courtesy of <a href="http://www.glyphicons.com">glyphicons.com</a>
+    </div>
+  </footer>
+</body>
+</html>
